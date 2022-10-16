@@ -1,0 +1,153 @@
+<!DOCTYPE html>	
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    >
+
+    <h:head>
+    </h:head>
+
+    <h:body>
+    	<div class="card ui-fluid ">
+    <h:form>
+        <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+
+        <h5 class="mt-0">Demande</h5>
+        <h:outputLabel value="heni" />
+        <div class="formgrid grid">
+            <div class="field col-12 md:col-4">
+       			<p:inputText  id="float-input" value="#{DemandeBean.nom}"/>
+      			<p:outputLabel for="@previous" value="Username"/>
+   			</div>
+           
+            <div class="field col-12 md:col-4">
+                <p:outputLabel for="input3" value="Numero GSM"/>
+                <p:inputNumber id="input3" value="#{DemandeBean.n_gsm}"
+                                maxValue="99999999" decimalPlaces="3" />
+            </div>
+
+             <div class="field col-12 md:col-4">
+       			<p:inputText  id="float-input" value="#{DemandeBean.email}"/>
+      			<p:outputLabel for="@previous" value="email"/>
+   			</div>
+			
+                <p:outputLabel for="city" value="Agence "/>
+                <p:selectOneMenu id="city" value="#{DemandeBean.agence}" style="width:150px">
+                    <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{DemandeBean.agenceList}"/>
+                </p:selectOneMenu>
+            <div class="field col-12 md:col-4">
+                <p:outputLabel for="basic" value="Date d'ajout"/>
+                <p:datePicker id="basic" value="#{DemandeBean.date_ajout}" />
+            </div>
+
+            <div class="field col-12 md:col-4">
+                <p:outputLabel for="basic" value="Date de trt"/>
+                <p:datePicker id="basic" value="#{DemandeBean.date_trt}" />
+            </div>
+
+          <div class="field col-12 md:col-4">
+                <p:outputLabel for="input3" value="Numero CIN"/>
+                <p:inputNumber id="input3" value="#{DemandeBean.cin}"
+                                maxValue="99999999" decimalPlaces="3" />
+            </div>
+			<div class="field col-12 md:col-4">
+                <p:outputLabel for="input3" value="Numero CIN"/>
+                <p:inputNumber id="input3" value="#{DemandeBean.six_chiffre}"
+                                maxValue="999999" decimalPlaces="3" />
+            </div>
+            <div class="field col-12 md:col-4">
+                <p:outputLabel for="input3" value="Numero CIN"/>
+                <p:inputNumber id="input3" value="#{DemandeBean.quatre_prem_chiffre}"
+                                maxValue="9999" decimalPlaces="3" />
+            </div>
+            <div class="field col-12 md:col-4">
+                <p:outputLabel for="input3" value="Numero CIN"/>
+                <p:inputNumber id="input3" value="#{DemandeBean.quatre_der_chiffre}"
+                                maxValue="99999999" decimalPlaces="3" />
+            </div>
+			 <p:messages showDetail="true"/>
+        	<p:captcha label="Captcha"/>
+            <p:commandButton value="Save Demande" update="msgs" actionListener="#{DemandeBean.saveDemande}"
+                             icon="pi pi-check"/>
+           </div>
+    </h:form>
+</div>
+<script>
+    PrimeFaces.locales['es'] = {
+        closeText: 'Cerrar',
+        prevText: 'Anterior',
+        nextText: 'Siguiente',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+        weekHeader: 'Semana',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Sólo hora',
+        timeText: 'Tiempo',
+        hourText: 'Hora',
+        minuteText: 'Minuto',
+        secondText: 'Segundo',
+        millisecondText: 'Milisegundo',
+        currentText: 'Fecha actual',
+        ampm: false,
+        month: 'Mes',
+        week: 'Semana',
+        day: 'Día',
+        allDayText: 'Todo el día',
+        today: 'Hoy',
+        clear: 'Claro'
+    };
+    PrimeFaces.locales ['de'] = {
+        closeText: 'Schließen',
+        prevText: 'Zurück',
+        nextText: 'Weiter',
+        monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+        monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+        dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+        dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+        weekHeader: 'Woche',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Nur Zeit',
+        timeText: 'Zeit',
+        hourText: 'Stunde',
+        minuteText: 'Minute',
+        secondText: 'Sekunde',
+        millisecondText: 'Millisekunde',
+        currentText: 'Aktuelles Datum',
+        ampm: false,
+        month: 'Monat',
+        week: 'Woche',
+        day: 'Tag',
+        allDayText: 'Ganzer Tag',
+        today: 'Heute',
+        clear: 'Löschen'
+    };
+</script>
+
+<script>
+    //<![CDATA[
+    function dateTemplateFunc(date) {
+        return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;width: 2.5rem;height: 2.5rem;line-height: 2.5rem;display: flex;align-items: center;justify-content: center;">' + date.day + '</span>';
+    }
+
+    //]]>
+</script>
+
+<style>
+    .value {
+        font-weight: bold;
+    }
+</style>
+    </h:body>
+</html>
